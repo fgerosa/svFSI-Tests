@@ -10,7 +10,7 @@ Searched file name to trigger stop: STOP_SIM
 
 Save results to VTK format: 1
 Name prefix of saved VTK files: result
-Increment in saving VTK files: 100
+Increment in saving VTK files: 1
 Start saving after time step: 1
 
 Increment in saving restart files: 100
@@ -23,18 +23,18 @@ Debug: 0
 #----------------------------------------------------------------
 # Mesh data
 Add mesh: msh {
-   Mesh file path:    ../../mesh/nonunif-quad_N64/mesh-complete.mesh.vtu
+   Mesh file path:    ../../mesh/ifem-fluid/mesh-complete.mesh.vtu
    Add face: left {
-      Face file path: ../../mesh/nonunif-quad_N64/mesh-surfaces/left.vtp
+      Face file path: ../../mesh/ifem-fluid/mesh-surfaces/left.vtp
    }
    Add face: right {
-      Face file path: ../../mesh/nonunif-quad_N64/mesh-surfaces/right.vtp
+      Face file path: ../../mesh/ifem-fluid/mesh-surfaces/right.vtp
    }
    Add face: bottom {
-      Face file path: ../../mesh/nonunif-quad_N64/mesh-surfaces/bottom.vtp
+      Face file path: ../../mesh/ifem-fluid/mesh-surfaces/bottom.vtp
    }
    Add face: top {
-      Face file path: ../../mesh/nonunif-quad_N64/mesh-surfaces/top.vtp
+      Face file path: ../../mesh/ifem-fluid/mesh-surfaces/top.vtp
    }
 }
 
@@ -46,9 +46,9 @@ Add equation: fluid {
    Max iterations: 10
    Tolerance: 1e-6
 
-   Density: 1.0
-   Viscosity: constant {Value: 0.001}
-   Backflow stabilization coefficient: 0.1
+   Density: 100.0
+   Viscosity: constant {Value: 10.0}
+   Backflow stabilization coefficient: 0.
 
    Output: Spatial {
       Velocity: t
@@ -63,7 +63,7 @@ Add equation: fluid {
 
    LS type: GMRES
    {
-      Preconditioner: Trilinos-ILUT
+      #Preconditioner: Trilinos-ILUT
       Tolerance: 1e-6
       Max iterations: 100
       Krylov space dimension: 50
